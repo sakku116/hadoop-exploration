@@ -1,0 +1,1 @@
+docker-hadoop & docker-hive is copied from https://github.com/big-data-europe repositories
