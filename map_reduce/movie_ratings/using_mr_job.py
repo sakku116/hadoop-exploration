@@ -8,14 +8,14 @@ map reduce using MRJob
 class RatingsBreakdown(MRJob):
     def steps(self):
         return [
-            MRStep(mapper=self.mapperGetRatings, reducer=self.reducerCountRatings)
+            MRStep(mapper=self.mapper, reducer=self.reducer)
         ]
 
-    def mapperGetRatings(self, _, line):
+    def mapper(self, _, line):
         (userID, movieID, rating, timestamp) = line.split("\t")
         yield rating, 1
 
-    def reducerCountRatings(self, key, values):
+    def reducer(self, key, values):
         yield key, sum(values)
 
 
